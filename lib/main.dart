@@ -42,12 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: ColoredBox(
-          color: Colors.orangeAccent,
-         child:SizedBox(
-           width: 100,
-           height: 100,
-         )
+        child: CloseButton(
+          color: Colors.red,
+         onPressed: () => debugPrint("Do something"),
         ),
       )
     );
