@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      showSemanticsDebugger: true,
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -30,30 +32,49 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+bool isShow = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-        margin: const EdgeInsets.all(10.0),
-        child:ClipRect(
-            child:Banner(
-          message:"25% OFF",
-          location: BannerLocation.topEnd,
-              color: Colors.red,
-          child: Container(
-            height: 250,
-            width: 250,
-            color: Colors.orangeAccent,
-          ),
-      ),
+      body:SizedBox(
+        width: 500,
+        height: double.infinity,
+        child: Column(
+          children: [
+            OutlinedButton(
+                child: const Text('Click'),
+                onPressed: () => setState(() {
+                  isShow = true;
+                }),
+                ),
+            if(isShow)
+              BlockSemantics(
+                blocking: isShow,
+                child:Card(
+                color: Colors.orangeAccent,
+                child:SizedBox(
+                  width: 200,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Text('This is a Card'),
+                      TextButton(
+                          child: const Text('Close'),
+                          onPressed: () => setState(() {
+                            isShow = false;
+                          }),
+                          ),
+                    ],
+                  ),
+                )
+                )
+              )
+          ],
         ),
-      ),
-      ),
+      )
     );
   }
 }
