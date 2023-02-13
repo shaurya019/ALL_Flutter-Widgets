@@ -42,15 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body:Center(
-        child: ChoiceChip(
-        label: const Text("This is a Flutter Chip"),
-           selected : isSelected,
-          selectedColor: Colors.orangeAccent,
-          onSelected: (newState){
-          setState(() {
-            isSelected = newState;
-          });
-          },
+        child: CircleAvatar(
+       backgroundColor: Colors.orangeAccent,
+          radius: 55,
         ),
       )
     );
