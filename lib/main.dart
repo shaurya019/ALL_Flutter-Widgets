@@ -29,37 +29,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- bool selected = false;
+
+  static const List<String> listItems = <String>[
+    'apple',
+    'banana',
+    'melon',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(onPressed: (){}, icon: Icon(Icons.notifications)),
-        ],
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
-        backgroundColor: Colors.orangeAccent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
-          ),
-        ),
       ),
-      body: Container(
-        color:Colors.orangeAccent,
-        alignment: Alignment.center,
-        width: double.infinity,
-        height: 200,
-        child: AspectRatio(
-          aspectRatio: 16/5,
-          child: Container(
-            color:Colors.blueAccent,
-          ),
-        ),
+      body:Autocomplete<String>(
+       optionsBuilder: (TextEditingValue textEditingValue){
+         if(textEditingValue.text == ''){
+           return const Iterable<String>.empty();
+         }
+         return listItems.where((String item) {
+           return item.contains(textEditingValue.text.toLowerCase());
+         });
+       }
       )
     );
   }
