@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,13 +38,22 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
+        child: Container(
+        margin: const EdgeInsets.all(10.0),
+        child:ClipRect(
+            child:Banner(
+          message:"25% OFF",
+          location: BannerLocation.topEnd,
+              color: Colors.red,
           child: Container(
             height: 250,
             width: 250,
             color: Colors.orangeAccent,
-            child: const Baseline(baseline: 0, baselineType: TextBaseline.alphabetic,child: FlutterLogo(size: 50),),
           ),
-      )
+      ),
+        ),
+      ),
+      ),
     );
   }
 }
