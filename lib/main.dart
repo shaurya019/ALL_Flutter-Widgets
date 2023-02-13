@@ -42,10 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: CircularProgressIndicator(
+        child: ColoredBox(
           color: Colors.orangeAccent,
-          backgroundColor: Colors.blueGrey,
-          // value: .50,
+         child:SizedBox(
+           width: 100,
+           height: 100,
+         )
         ),
       )
     );
