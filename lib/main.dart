@@ -41,10 +41,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Center(
-        child: CircleAvatar(
-       backgroundColor: Colors.orangeAccent,
-          radius: 55,
+      body: Center(
+        child: CircularProgressIndicator(
+          color: Colors.orangeAccent,
+          backgroundColor: Colors.blueGrey,
+          // value: .50,
         ),
       )
     );
