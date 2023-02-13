@@ -29,13 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+ bool selected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +37,26 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-height: 120,
-            width: double.infinity,
-          color: Colors.black45,
-          child: const Align(
-          alignment: Alignment.bottomLeft,
-            child: FlutterLogo(
-              size: 60,
+      body: GestureDetector(
+        onTap: (){
+          setState(() {
+            selected = !selected;
+          });
+        },
+          child:Center(
+            child: Container(
+              height: 120,
+              width: double.infinity,
+              color: Colors.black45,
+              child: AnimatedAlign(
+                alignment: selected ? Alignment.topRight : Alignment.bottomLeft,
+                duration: const Duration(seconds: 1),
+                curve: Curves.fastOutSlowIn,
+                child: const FlutterLogo(size: 50,),
+              )
             ),
-          ),
-        ),
-      ) // This trailing comma makes auto-formatting nicer for build methods.
+          )
+      )// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
