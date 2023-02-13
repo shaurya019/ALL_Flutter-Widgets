@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,27 +32,30 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  static const List<String> listItems = <String>[
-    'apple',
-    'banana',
-    'melon',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Autocomplete<String>(
-       optionsBuilder: (TextEditingValue textEditingValue){
-         if(textEditingValue.text == ''){
-           return const Iterable<String>.empty();
-         }
-         return listItems.where((String item) {
-           return item.contains(textEditingValue.text.toLowerCase());
-         });
-       }
+      body: Stack(
+        children: <Widget>[
+          Text('0' * 10000,style: const TextStyle(color: Colors.blueAccent),),
+          Center(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+              sigmaX: 4.0,
+                sigmaY: 4.0,
+            ),
+            child: Container(
+             alignment: Alignment.center,
+             width: 50,
+             height: 50,
+             child: const Text('Blur'),
+            ),
+            ),
+          ),
+        ],
       )
     );
   }
