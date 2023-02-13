@@ -41,26 +41,20 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body:Center(
-        child: ElevatedButton(
-          child: const Text('Button'),
-          onPressed: () {
-            showModalBottomSheet(
-                context: context, 
-                builder: (BuildContext context){
-                  return SizedBox(
-                    height: 400,
-                    child: Center(
-                        child: ElevatedButton(
-                          child: const Text('Close'),
-                          onPressed: (){
-                            Navigator.pop(context);
-                          },
-                        )
-                    ),
-                  );
-            },
-            );
-          },
+        child: Card(
+          elevation: 20,
+          color: Colors.orangeAccent,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const SizedBox(height: 8,),
+                const Text('This is a Flutter card'),
+                TextButton(onPressed: (){}, child: Text('Press'))
+              ],
+            ),
+          ),
         ),
       )
     );
