@@ -36,27 +36,27 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(onPressed: (){}, icon: Icon(Icons.notifications)),
+        ],
+        leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
+        backgroundColor: Colors.orangeAccent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
       ),
-      body: GestureDetector(
-        onTap: (){
-          setState(() {
-            selected = !selected;
-          });
-        },
-          child:Center(
-            child: Container(
-              height: 120,
-              width: double.infinity,
-              color: Colors.black45,
-              child: AnimatedAlign(
-                alignment: selected ? Alignment.topRight : Alignment.bottomLeft,
-                duration: const Duration(seconds: 1),
-                curve: Curves.fastOutSlowIn,
-                child: const FlutterLogo(size: 50,),
-              )
-            ),
-          )
+      body: Center(
+        child: Text(
+          'Body',
+          style: TextStyle(fontSize: 24),
+        ),
       )// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+
