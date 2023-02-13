@@ -42,13 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body:Center(
-        child: Checkbox(
-        value: isChecked,
-          activeColor: Colors.orangeAccent,
-          onChanged: (newBool){
-          setState(() {
-            isChecked = newBool;
-          });
+        child: Chip(
+        label: const Text("This is a Flutter Chip"),
+          onDeleted: (){
+          debugPrint("Do something");
           },
         ),
       )
