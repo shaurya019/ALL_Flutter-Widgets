@@ -49,12 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: Center(
-        child: Text(
-          'Body',
-          style: TextStyle(fontSize: 24),
+      body: Container(
+        color:Colors.orangeAccent,
+        alignment: Alignment.center,
+        width: double.infinity,
+        height: 200,
+        child: AspectRatio(
+          aspectRatio: 16/5,
+          child: Container(
+            color:Colors.blueAccent,
+          ),
         ),
-      )// This trailing comma makes auto-formatting nicer for build methods.
+      )
     );
   }
 }
