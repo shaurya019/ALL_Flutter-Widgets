@@ -32,12 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-int _curr = 0;
-List<Widget> body = const [
-  Icon(Icons.home),
-  Icon(Icons.menu),
-  Icon(Icons.person),
-];
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,30 +41,28 @@ List<Widget> body = const [
         title: Text(widget.title),
       ),
       body:Center(
-        child: body[_curr],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _curr,
-        onTap: (int newIndex){
-          setState(() {
-            _curr = newIndex;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon:Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: 'menu',
-            icon:Icon(Icons.menu),
-          ),
-          BottomNavigationBarItem(
-            label: 'person',
-            icon:Icon(Icons.person),
-          ),
-        ]
-      ),
+        child: ElevatedButton(
+          child: const Text('Button'),
+          onPressed: () {
+            showModalBottomSheet(
+                context: context, 
+                builder: (BuildContext context){
+                  return SizedBox(
+                    height: 400,
+                    child: Center(
+                        child: ElevatedButton(
+                          child: const Text('Close'),
+                          onPressed: (){
+                            Navigator.pop(context);
+                          },
+                        )
+                    ),
+                  );
+            },
+            );
+          },
+        ),
+      )
     );
   }
 }
