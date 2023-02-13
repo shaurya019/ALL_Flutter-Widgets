@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
       home: const MyHomePage(title: 'Flutter Widegts'),
     );
@@ -36,25 +36,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool? isChecked = false;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body:Center(
-        child: Card(
-          elevation: 20,
-          color: Colors.orangeAccent,
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const SizedBox(height: 8,),
-                const Text('This is a Flutter card'),
-                TextButton(onPressed: (){}, child: Text('Press'))
-              ],
-            ),
-          ),
+        child: Checkbox(
+        value: isChecked,
+          activeColor: Colors.orangeAccent,
+          onChanged: (newBool){
+          setState(() {
+            isChecked = newBool;
+          });
+          },
         ),
       )
     );
