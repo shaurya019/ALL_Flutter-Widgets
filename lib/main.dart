@@ -41,11 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: CloseButton(
-          color: Colors.red,
-         onPressed: () => debugPrint("Do something"),
+      body: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          Colors.white,
+          BlendMode.color,
         ),
+        child Image.asset('assets/icon/.jpg'),
       )
     );
   }
