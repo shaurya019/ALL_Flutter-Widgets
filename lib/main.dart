@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      showSemanticsDebugger: true,
+      // showSemanticsDebugger: true,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -32,49 +32,44 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-bool isShow = false;
+int _curr = 0;
+List<Widget> body = const [
+  Icon(Icons.home),
+  Icon(Icons.menu),
+  Icon(Icons.person),
+];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:SizedBox(
-        width: 500,
-        height: double.infinity,
-        child: Column(
-          children: [
-            OutlinedButton(
-                child: const Text('Click'),
-                onPressed: () => setState(() {
-                  isShow = true;
-                }),
-                ),
-            if(isShow)
-              BlockSemantics(
-                blocking: isShow,
-                child:Card(
-                color: Colors.orangeAccent,
-                child:SizedBox(
-                  width: 200,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const Text('This is a Card'),
-                      TextButton(
-                          child: const Text('Close'),
-                          onPressed: () => setState(() {
-                            isShow = false;
-                          }),
-                          ),
-                    ],
-                  ),
-                )
-                )
-              )
-          ],
-        ),
-      )
+      body:Center(
+        child: body[_curr],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _curr,
+        onTap: (int newIndex){
+          setState(() {
+            _curr = newIndex;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon:Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'menu',
+            icon:Icon(Icons.menu),
+          ),
+          BottomNavigationBarItem(
+            label: 'person',
+            icon:Icon(Icons.person),
+          ),
+        ]
+      ),
     );
   }
 }
