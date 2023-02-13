@@ -36,16 +36,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool? isChecked = false;
+    bool isSelected = false;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body:Center(
-        child: Chip(
+        child: ChoiceChip(
         label: const Text("This is a Flutter Chip"),
-          onDeleted: (){
-          debugPrint("Do something");
+           selected : isSelected,
+          selectedColor: Colors.orangeAccent,
+          onSelected: (newState){
+          setState(() {
+            isSelected = newState;
+          });
           },
         ),
       )
