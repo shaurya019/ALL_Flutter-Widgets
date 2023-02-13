@@ -41,13 +41,19 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ColorFiltered(
-        colorFilter: ColorFilter.mode(
-          Colors.white,
-          BlendMode.color,
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 900,
+            maxHeight: 350,
+          ),
+
+        child: Container(
+         color: Colors.orangeAccent,
+         width: double.infinity,
         ),
-        child Image.asset('assets/icon/.jpg'),
-      )
+      ),
+      ),
     );
   }
 }
