@@ -41,13 +41,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Container(
-        padding: EdgeInsets.all(8.0),
-        color: Colors.orangeAccent,
-        alignment: Alignment.center,
-        child: Text('Flutter Mapp'),
-        constraints: BoxConstraints.expand(height: 200),
-        transform: Matrix4.rotationZ(.2),
+      body:Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('Row 1'),
+          Text('Row 1'),
+          Text('Row 1'),
+          Text('Row 1'),
+          Text('Row 1'),
+        ],
       )
     );
   }
