@@ -41,19 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: 900,
-            maxHeight: 350,
-          ),
-
-        child: Container(
-         color: Colors.orangeAccent,
-         width: double.infinity,
-        ),
-      ),
-      ),
+      body: Container(
+        padding: EdgeInsets.all(8.0),
+        color: Colors.orangeAccent,
+        alignment: Alignment.center,
+        child: Text('Flutter Mapp'),
+        constraints: BoxConstraints.expand(height: 200),
+        transform: Matrix4.rotationZ(.2),
+      )
     );
   }
 }
