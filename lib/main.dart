@@ -12,66 +12,40 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // showSemanticsDebugger: true,
+    return CupertinoApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
+      theme: CupertinoThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Color.fromARGB(255, 18, 32, 47),
+        primaryColor: CupertinoColors.systemOrange,
       ),
-      home: const MyHomePage(title: 'Flutter Widegts'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    bool isSelected = false;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: CupertinoPageScaffold(
+      home: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text('Flutter Widegts'),
+        ),
         child: Center(
-          child: CupertinoButton(
-            child: Text('CupertinoAction'),
-            onPressed: () {
-              showCupertinoModalPopup(
-                  context: context,
-                  builder: (BuildContext context) =>
-                  {
-                    CupertinoActionSheet(
-                      title: Text('Flutter Map'),
-                      message: Text('Message'),
-                      actions: <CupertinoActionSheet>[
-                        CupertinoActionSheet(
-                          child: const Text('Do Something'),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    ),
-                  }
-              );
-            },
-          ),
+          child: Icon(CupertinoIcons.share),
         ),
       ),
     );
   }
 }
 
-
-
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key, required this.title});
+//   final String title;
+//
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+//
+// class _MyHomePageState extends State<MyHomePage> {
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     bool isSelected = false;
+//
+//   }
+// }
