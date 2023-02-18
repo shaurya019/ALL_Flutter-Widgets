@@ -41,39 +41,31 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Center(
-            child: CustomPaint(
-              child: Text(
-                'This is Pacman',
-                style: TextStyle(
-                  color: Colors.black,
-                  backgroundColor: Colors.white54,
-                  fontSize: 30,
-                ),
-              ),
-              painter: DemoPainter(),
-            )
-        ),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index){
+                  return Container(
+                    alignment: Alignment.center,
+                    color: Colors.orange[100 * (index % 9)],
+                    child: Text('Grid Item $index'),
+                  );
+                },
+              childCount: 50,
+            ),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent
+              (maxCrossAxisExtent: 200.0,
+            mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 4.0,
+            ),
+          )
+        ],
       )
     );
   }
 }
 
-class DemoPainter extends CustomPainter{
-  @override
-  void paint(Canvas canvas, Size size){
-    var center = size/2;
-    var paint = Paint()..color = Colors.yellow;
-    canvas.drawArc(
-        Rect.fromCenter(center: Offset(center.width,center.height), width: 250, height: 250,),
-        .4, 2*3.14-.8, true, paint);
-  }
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate){
-    return false;
-  }
-}
 
 
