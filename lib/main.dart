@@ -36,27 +36,33 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime  selectedDate = DateTime.now();
+   List<int> items = List<int>.generate(100, (int index) => index);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Flutter APP'),
-          DefaultTextStyle(style: TextStyle(fontSize: 34,color: Colors.deepOrange),
-          child:Center(
-              child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('HEllo'),
-            ],
-          ),
-          ),
-          ),
-        ],
-      )
+      body: ListView.builder(
+        itemCount: items.length,
+        padding: EdgeInsets.symmetric(vertical: 16),
+        itemBuilder: (BuildContext context,int index){
+          return Dismissible(
+            background: Container(
+              color: Colors.red,
+            ),
+            key: ValueKey<int>(items[index]),
+            onDismissed: (DismissDirection directio){
+              setState((){
+                items.removeAt(index);
+              });
+            },
+            child: ListTile(
+              title: Text(
+                  'Item ${items[index]}'
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
