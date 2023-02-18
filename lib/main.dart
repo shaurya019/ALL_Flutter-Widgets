@@ -41,27 +41,29 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        padding: EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (BuildContext context,int index){
-          return Dismissible(
-            background: Container(
-              color: Colors.red,
+      body:Center(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 200,
+              width: double.infinity,
+              color: Colors.deepOrange,
             ),
-            key: ValueKey<int>(items[index]),
-            onDismissed: (DismissDirection directio){
-              setState((){
-                items.removeAt(index);
-              });
-            },
-            child: ListTile(
-              title: Text(
-                  'Item ${items[index]}'
-              ),
+            const Divider(
+              color: Colors.black,
+              height: 20,
+              thickness: 5,
+              indent: 20,
+              endIndent: 40,
             ),
-          );
-        },
+
+            Container(
+              height: 200,
+              width: double.infinity,
+              color: Colors.deepOrange,
+            )
+          ],
+        ),
       ),
     );
   }
