@@ -41,16 +41,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Builder(
-          builder: (context) => ElevatedButton(onPressed: (){
-            Scaffold.of(context).openDrawer();
-          }, child: Text("Open")),
-        ),
-      ),
      drawer: Drawer(
        child: ListView(
          children: [
+           DrawerHeader(
+               decoration:BoxDecoration(color: Colors.cyan),child: Text("Flutter-App")),
            ListTile(
              title: Text("Item 1"),
              onTap: () {},
