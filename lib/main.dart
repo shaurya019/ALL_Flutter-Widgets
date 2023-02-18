@@ -12,53 +12,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      debugShowCheckedModeBanner: false,
-      theme: CupertinoThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Color.fromARGB(255, 23, 127, 245),
-        primaryColor: CupertinoColors.systemOrange,
-      ),
-      home: const MyHomePage(title: 'Flutter Widegts'),
+    return CupertinoPageScaffold(
+     backgroundColor: Color.fromARGB(255, 18, 32, 47),
+     navigationBar: CupertinoNavigationBar(
+       backgroundColor: CupertinoColors.systemGrey.withOpacity(0.6),
+       middle: Text('Flutter Mapp'),
+     ),
+     child: Stack(
+       children: <Widget>[
+         Image.network(
+           'https://img.freepik.com/free-vector/hand-drawn-illustration-people-with-smartphone-marketing_52683-66659.jpg?w=1380&t=st=1676715382~exp=1676715982~hmac=7914b29d311f1892ecf96ef47e51b83370621004b6ffc38bde121dd738cae30e',
+           fit: BoxFit.cover,
+           height: double.infinity,
+         ),
+       ],
+     ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-   return  Scaffold(
-     body: Center(
-     child: SizedBox(
-       width: 100,
-       height: 100,
-       child: CupertinoContextMenu(
-         child: Image.network('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fuser%2Fyoutube%2Fvideos&psig=AOvVaw0-WXur26MlojxkebkfCcGa&ust=1676800867943000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCKil5JLonv0CFQAAAAAdAAAAABAD'),
-       actions: <Widget>[
-         CupertinoContextMenuActions(
-           child : Text('Action 1'),
-           onPressed: (){
-             Navigator.pop(context);
-           },
-         ),
-         CupertinoContextMenuActions(
-           child : Text('Action 1'),
-           onPressed: (){
-             Navigator.pop(context);
-           },
-         ),
-       ],
-     ),
-   ),
-   )
-   );
-  }
-}
