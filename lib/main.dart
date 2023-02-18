@@ -36,26 +36,31 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-   List<int> items = List<int>.generate(100, (int index) => index);
+   String dropdownValue = 'one';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: DraggableScrollableSheet(
-        builder: (BuildContext context, ScrollController scrollController){
-          return Container(
-            color: Colors.orangeAccent,
-            child: ListView.builder(
-                controller: scrollController,
-                itemCount: 25,
-                itemBuilder:(BuildContext context, int index){
-                  return ListTile(
-                    title: Text('Item $index'),
-                  );
-                },
-            ),
-          );
-        },
+      body: Center(
+        child: DropdownButton<String>(
+          value: dropdownValue,
+          icon: Icon(Icons.menu),
+          style: TextStyle(color: Colors.cyan),
+          underline: Container(
+            height: 2,
+              color: Colors.cyan
+          ),
+          onChanged: (String? newValue){
+            setState(() {
+              dropdownValue = newValue!;
+            });
+          },
+          items: [
+            DropdownMenuItem<String>(value:'one',child: Text('one')),
+            DropdownMenuItem<String>(value:'Two',child: Text('Two')),
+            DropdownMenuItem<String>(value:'Three',child: Text('Three')),
+          ],
+        ),
       ),
     );
   }
