@@ -38,10 +38,33 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
    return CupertinoPageScaffold(
      child: Center(
-       child: CupertinoActivityIndicator(
-         radius: 50,
-         color: Colors.orangeAccent,
-       )
+       child: CupertinoButton(
+        onPressed: (){
+          showCupertinoDialog(
+              context: context,
+              builder: (BuildContext context) => CupertinoAlertDialog(
+                title: const Text('Alert'),
+                content: const Text('Are you subscribe to flutter Mapp'),
+                actions: <CupertinoDialogAction>[
+                  CupertinoDialogAction(
+                    child: Text('No'),
+                    isDestructiveAction: true,
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                  CupertinoDialogAction(
+                    child: Text('Yes'),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+          );
+        },
+         child: Text('CupertinoDialogAction'),
+       ),
      ),
    );
   }
