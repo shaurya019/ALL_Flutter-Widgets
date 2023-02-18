@@ -35,18 +35,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-   return Center(
-     child: Column(
-       mainAxisSize: MainAxisSize.min,
-        children: [
-          CupertinoButton(
-            onPressed: null,
-            child: Text('Enabled'),
-          ),
-          SizedBox(height: 30),
-          CupertinoButton.filled(child: Text('Enabled'), onPressed: null)
+   return  Scaffold(
+     body: Center(
+     child: SizedBox(
+       width: 100,
+       height: 100,
+       child: CupertinoContextMenu(
+         child: Image.network('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fuser%2Fyoutube%2Fvideos&psig=AOvVaw0-WXur26MlojxkebkfCcGa&ust=1676800867943000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCKil5JLonv0CFQAAAAAdAAAAABAD'),
+       actions: <Widget>[
+         CupertinoContextMenuActions(
+           child : Text('Action 1'),
+           onPressed: (){
+             Navigator.pop(context);
+           },
+         ),
+         CupertinoContextMenuActions(
+           child : Text('Action 1'),
+           onPressed: (){
+             Navigator.pop(context);
+           },
+         ),
        ],
      ),
+   ),
+   )
    );
   }
 }
