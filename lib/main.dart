@@ -36,37 +36,34 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle titles = const TextStyle(
-      fontStyle: FontStyle.italic,
-      fontWeight: FontWeight.bold,
-    );
-
+    DateTime  selectedDate = DateTime.now();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:DataTable(
-        columns: <DataColumn>[
-          DataColumn(
-            label: Text('Name',style: titles,),
-          ),
-          DataColumn(
-            label: Text('Age',style: titles,),
-          ),
-          DataColumn(
-            label: Text('Color',style: titles,),
-          ),
-        ],
-        rows: <DataRow>[
-          DataRow(
-            cells: <DataCell>[
-              DataCell(Text('Max')),
-              DataCell(Text('21')),
-              DataCell(Text('Red')),
-            ]
-          )
-        ],
-      ),
+      body:Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+                "${selectedDate.year} - ${selectedDate.month} - ${selectedDate.day}",
+            ),
+            ElevatedButton(onPressed: () async {
+              final DateTime? dateTime = await showDatePicker(
+                context: context,
+                initialDate: selectedDate,
+                firstDate: DateTime(2000),
+                lastDate: DateTime(3000),
+              );
+             if(dateTime != null){
+               setState(() {
+                 selectedDate = dateTime;
+               });
+             }
+            }, child: Text("Choose Date"))
+          ],
+        ),
+      )
     );
   }
 }
