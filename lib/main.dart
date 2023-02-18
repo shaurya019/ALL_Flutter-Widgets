@@ -41,29 +41,22 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-                "${selectedDate.year} - ${selectedDate.month} - ${selectedDate.day}",
+      body: Center(
+      child:SizedBox(
+        height: 300,
+        width: 300,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              colors: <Color>[
+              Colors.deepOrange,
+              Colors.red,
+              ],
             ),
-            ElevatedButton(onPressed: () async {
-              final DateTime? dateTime = await showDatePicker(
-                context: context,
-                initialDate: selectedDate,
-                firstDate: DateTime(2000),
-                lastDate: DateTime(3000),
-              );
-             if(dateTime != null){
-               setState(() {
-                 selectedDate = dateTime;
-               });
-             }
-            }, child: Text("Choose Date"))
-          ],
+          ),
         ),
-      )
+      ),
+      ),
     );
   }
 }
