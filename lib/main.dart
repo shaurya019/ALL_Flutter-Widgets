@@ -41,29 +41,21 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Center(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 200,
-              width: double.infinity,
-              color: Colors.deepOrange,
+      body: DraggableScrollableSheet(
+        builder: (BuildContext context, ScrollController scrollController){
+          return Container(
+            color: Colors.orangeAccent,
+            child: ListView.builder(
+                controller: scrollController,
+                itemCount: 25,
+                itemBuilder:(BuildContext context, int index){
+                  return ListTile(
+                    title: Text('Item $index'),
+                  );
+                },
             ),
-            const Divider(
-              color: Colors.black,
-              height: 20,
-              thickness: 5,
-              indent: 20,
-              endIndent: 40,
-            ),
-
-            Container(
-              height: 200,
-              width: double.infinity,
-              color: Colors.deepOrange,
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }
