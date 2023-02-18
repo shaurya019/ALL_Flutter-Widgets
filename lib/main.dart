@@ -36,33 +36,37 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isSelected = false;
+    TextStyle titles = const TextStyle(
+      fontStyle: FontStyle.italic,
+      fontWeight: FontWeight.bold,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index){
-                  return Container(
-                    alignment: Alignment.center,
-                    color: Colors.orange[100 * (index % 9)],
-                    child: Text('Grid Item $index'),
-                  );
-                },
-              childCount: 50,
-            ),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent
-              (maxCrossAxisExtent: 200.0,
-            mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
-              childAspectRatio: 4.0,
-            ),
+      body:DataTable(
+        columns: <DataColumn>[
+          DataColumn(
+            label: Text('Name',style: titles,),
+          ),
+          DataColumn(
+            label: Text('Age',style: titles,),
+          ),
+          DataColumn(
+            label: Text('Color',style: titles,),
+          ),
+        ],
+        rows: <DataRow>[
+          DataRow(
+            cells: <DataCell>[
+              DataCell(Text('Max')),
+              DataCell(Text('21')),
+              DataCell(Text('Red')),
+            ]
           )
         ],
-      )
+      ),
     );
   }
 }
