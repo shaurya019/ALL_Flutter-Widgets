@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: CupertinoThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Color.fromARGB(255, 18, 32, 47),
+        scaffoldBackgroundColor: Color.fromARGB(255, 23, 127, 245),
         primaryColor: CupertinoColors.systemOrange,
       ),
       home: const MyHomePage(title: 'Flutter Widegts'),
@@ -36,35 +35,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-   return CupertinoPageScaffold(
-     child: Center(
-       child: CupertinoButton(
-        onPressed: (){
-          showCupertinoDialog(
-              context: context,
-              builder: (BuildContext context) => CupertinoAlertDialog(
-                title: const Text('Alert'),
-                content: const Text('Are you subscribe to flutter Mapp'),
-                actions: <CupertinoDialogAction>[
-                  CupertinoDialogAction(
-                    child: Text('No'),
-                    isDestructiveAction: true,
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                  ),
-                  CupertinoDialogAction(
-                    child: Text('Yes'),
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-          );
-        },
-         child: Text('CupertinoDialogAction'),
-       ),
+   return Center(
+     child: Column(
+       mainAxisSize: MainAxisSize.min,
+        children: [
+          CupertinoButton(
+            onPressed: null,
+            child: Text('Enabled'),
+          ),
+          SizedBox(height: 30),
+          CupertinoButton.filled(child: Text('Enabled'), onPressed: null)
+       ],
      ),
    );
   }
