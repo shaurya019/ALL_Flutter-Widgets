@@ -20,32 +20,29 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color.fromARGB(255, 18, 32, 47),
         primaryColor: CupertinoColors.systemOrange,
       ),
-      home: CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          middle: Text('Flutter Widegts'),
-        ),
-        child: Center(
-          child: Icon(CupertinoIcons.share),
-        ),
-      ),
+      home: const MyHomePage(title: 'Flutter Widegts'),
     );
   }
 }
 
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-//   final String title;
-//
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-//
-// class _MyHomePageState extends State<MyHomePage> {
-//
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     bool isSelected = false;
-//
-//   }
-// }
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+   return CupertinoPageScaffold(
+     child: Center(
+       child: CupertinoActivityIndicator(
+         radius: 50,
+         color: Colors.orangeAccent,
+       )
+     ),
+   );
+  }
+}
