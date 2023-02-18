@@ -41,22 +41,22 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-      child:SizedBox(
-        height: 300,
-        width: 300,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: RadialGradient(
-              colors: <Color>[
-              Colors.deepOrange,
-              Colors.red,
-              ],
-            ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Flutter APP'),
+          DefaultTextStyle(style: TextStyle(fontSize: 34,color: Colors.deepOrange),
+          child:Center(
+              child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('HEllo'),
+            ],
           ),
-        ),
-      ),
-      ),
+          ),
+          ),
+        ],
+      )
     );
   }
 }
