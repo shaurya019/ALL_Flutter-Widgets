@@ -41,27 +41,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: DropdownButton<String>(
-          value: dropdownValue,
-          icon: Icon(Icons.menu),
-          style: TextStyle(color: Colors.cyan),
-          underline: Container(
-            height: 2,
-              color: Colors.cyan
-          ),
-          onChanged: (String? newValue){
-            setState(() {
-              dropdownValue = newValue!;
-            });
-          },
-          items: [
-            DropdownMenuItem<String>(value:'one',child: Text('one')),
-            DropdownMenuItem<String>(value:'Two',child: Text('Two')),
-            DropdownMenuItem<String>(value:'Three',child: Text('Three')),
-          ],
-        ),
-      ),
+     drawer: Drawer(
+       child: ListView(
+         children: [
+           ListTile(
+             title: Text("Item 1"),
+             onTap: () {},
+           ),
+           ListTile(
+             title: Text("Item 2"),
+             onTap: () {},
+           )
+         ],
+       ),
+     ),
     );
   }
 }
