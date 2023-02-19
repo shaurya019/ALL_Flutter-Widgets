@@ -32,21 +32,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  bool isSelected = false;
+  int _counter = 0;
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body:Center(
-        child: FractionallySizedBox(
-         widthFactor: .5,
-          heightFactor: 1,
-            child:Container(
-              color: Colors.orange,
-            )
+        child: GestureDetector(
+        onTap: (){
+          setState(() {
+            _counter+=1;
+          });
+        },
+          child: Container(
+            height: 200,
+            width: 200,
+            color: Colors.orangeAccent,
+            child: Center(
+              child: Text(
+                  _counter.toString(),
+              ),
+            ),
+          ),
         ),
       ),
     );
