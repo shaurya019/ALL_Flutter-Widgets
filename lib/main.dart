@@ -31,9 +31,19 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+late final AnimationController _controller = AnimationController(
+  duration: Duration(seconds: 2),
+  vsync: this,
+)..repeat(reverse:true);
+
+late final Animation<double> _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn,);
 
   @override
+  void dispose(){
+    _controller.dispose();
+    super.dispose();
+  }
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -41,9 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
      body:Center(
-       child: FadeInImage.assetNetwork(
-           placeholder: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-           image: 'https://cdn.pixabay.com/photo/2016/10/21/14/50/plouzane-1758197_1280.jpg',
+       child: FadeTransition(
+         opacity: _animation,
+         child: FlutterLogo(size: 300,),
        ),
      ),
     );
