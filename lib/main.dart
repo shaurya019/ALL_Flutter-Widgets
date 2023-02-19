@@ -41,21 +41,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-     drawer: Drawer(
-       child: ListView(
-         children: [
-           DrawerHeader(
-               decoration:BoxDecoration(color: Colors.cyan),child: Text("Flutter-App")),
-           ListTile(
-             title: Text("Item 1"),
-             onTap: () {},
+     body: Column(
+       children: [
+         Expanded(
+           flex: 2,
+           child: Container(
+           color:Colors.blue,
+           height: 200,
+         ),
+         ),
+         Expanded(
+           flex: 1,
+           child: Container(
+             color:Colors.orange,
+             height: 200,
            ),
-           ListTile(
-             title: Text("Item 2"),
-             onTap: () {},
-           )
-         ],
-       ),
+         ),
+         Expanded(
+           flex: 4,
+           child: Container(
+             color:Colors.redAccent,
+             height: 200,
+           ),
+         ),
+       ],
      ),
     );
   }
