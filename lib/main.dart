@@ -41,10 +41,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: FlutterLogo(
-          size: 300,
-          style: FlutterLogoStyle.stacked,
-          textColor: Colors.blue,
+        child: FractionallySizedBox(
+         widthFactor: .5,
+          heightFactor: 1,
+            child:Container(
+              color: Colors.orange,
+            )
         ),
       ),
     );
