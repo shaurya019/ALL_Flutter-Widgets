@@ -32,18 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-late final AnimationController _controller = AnimationController(
-  duration: Duration(seconds: 2),
-  vsync: this,
-)..repeat(reverse:true);
-
-late final Animation<double> _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn,);
-
+  bool isSelected = false;
   @override
-  void dispose(){
-    _controller.dispose();
-    super.dispose();
-  }
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -51,9 +41,14 @@ late final Animation<double> _animation = CurvedAnimation(parent: _controller, c
         title: Text(widget.title),
       ),
      body:Center(
-       child: FadeTransition(
-         opacity: _animation,
-         child: FlutterLogo(size: 300,),
+       child: FilterChip(
+        label: Text('FilterChip'),
+         selected: isSelected,
+         onSelected: (bool value){
+          setState(() {
+            isSelected = !isSelected;
+          });
+         },
        ),
      ),
     );
