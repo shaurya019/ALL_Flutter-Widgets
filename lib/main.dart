@@ -41,14 +41,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
      body:Center(
-       child: FilterChip(
-        label: Text('FilterChip'),
-         selected: isSelected,
-         onSelected: (bool value){
-          setState(() {
-            isSelected = !isSelected;
-          });
-         },
+       child: Container(
+       width: 400,
+         color: Colors.orangeAccent,
+         child: FittedBox(
+             child: Text(
+               'This is Preety good to accept',
+                   style: TextStyle(color: Colors.black),
+             ),
+         ),
        ),
      ),
     );
