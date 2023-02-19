@@ -40,18 +40,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-     body:Center(
-       child: Container(
-       width: 400,
-         color: Colors.orangeAccent,
-         child: FittedBox(
-             child: Text(
-               'This is Preety good to accept',
-                   style: TextStyle(color: Colors.black),
-             ),
-         ),
-       ),
-     ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton:FloatingActionButton(
+          onPressed: () {},
+    backgroundColor: Colors.orangeAccent,
+    child: Icon(Icons.add),
+      ),
     );
   }
 }
