@@ -40,11 +40,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton:FloatingActionButton(
-          onPressed: () {},
-    backgroundColor: Colors.orangeAccent,
-    child: Icon(Icons.add),
+      body:Center(
+        child: FlutterLogo(
+          size: 300,
+          style: FlutterLogoStyle.stacked,
+          textColor: Colors.blue,
+        ),
       ),
     );
   }
