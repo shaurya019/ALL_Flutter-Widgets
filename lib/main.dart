@@ -39,25 +39,31 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Center(
-        child: GestureDetector(
-        onTap: (){
-          setState(() {
-            _counter+=1;
-          });
-        },
-          child: Container(
-            height: 200,
-            width: 200,
-            color: Colors.orangeAccent,
-            child: Center(
-              child: Text(
-                  _counter.toString(),
-              ),
-            ),
+      body:Column(
+       children: [
+         Container(
+          height: 200,
+          width: 200,
+          color: Colors.orangeAccent,
           ),
+         FractionalTranslation(
+           translation: Offset(1,-1),
+           child: Container(
+             height: 200,
+             width: 200,
+             color: Colors.blue,
+           ),
+         ),
+         FractionalTranslation(
+           translation: Offset(1,-1),
+           child: Container(
+             height: 200,
+             width: 200,
+             color: Colors.green,
+           ),
+         ),
+       ],
         ),
-      ),
     );
   }
 }
