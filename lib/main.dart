@@ -44,12 +44,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       height: 400,
     width: 300,
     child:GridTile(
-    header: Container(
-    height: 40,
-    child:Center(
-    child:Text('Header'),
-    ),
-    color: Colors.black38,
+    header: GridTileBar(
+      backgroundColor: Colors.black45,
+    leading: Icon(Icons.person),
+    title: Text('Flutter map'),
+    trailing: Icon(Icons.menu),
     ),
     child: Image.network(
     'https://tinyurl.com/yc4pctt5',
