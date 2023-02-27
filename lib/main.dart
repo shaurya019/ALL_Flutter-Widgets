@@ -41,16 +41,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Center(
-          child: OutlinedButton(
-            onPressed: () {},
-            child: Text('Click Me'),
-            style: OutlinedButton.styleFrom(
-              primary: Colors.white,
-              backgroundColor: Colors.orangeAccent,
-            ),
+      body:Column(
+        children: <Widget>[
+          Placeholder(
+            fallbackHeight: 300,
+            fallbackWidth: 50,
+            color: Colors.orangeAccent,
           )
-      ),
+        ],
+      )
     );
   }
 }
