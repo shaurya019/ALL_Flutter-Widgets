@@ -42,18 +42,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: PhysicalModel(
-          elevation: 20.0,
-         shadowColor: Colors.redAccent,
-          shape:BoxShape.circle,
-          color: Colors.orangeAccent,
-          child: SizedBox(
-            height: 250,
-            width: 250,
-              child:Center(
-                  child:Icon(Icons.flutter_dash,size: 100,)
-              ),
-          ),
+        child: Card(
+            child:Padding(
+              padding: EdgeInsets.all(40),
+                // padding: EdgeInsets.fromLTRB(left, top, right, bottom)
+              child: Text('flutter Mapp'),
+            )
         ),
       )
     );
