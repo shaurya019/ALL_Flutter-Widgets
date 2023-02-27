@@ -34,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
- bool ignore = false;
+ Color color = Colors.blue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +42,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: MaterialButton(
-          onPressed: () {},
-          child: Text('Click'),
-          highlightColor: Colors.orangeAccent,
-          splashColor: Colors.redAccent,
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              color = Colors.red;
+            });
+          },
         ),
       ),
     );
