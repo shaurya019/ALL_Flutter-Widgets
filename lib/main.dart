@@ -39,28 +39,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
-          itemBuilder: (_,index) => GridTile(
-              header: GridTileBar(
-                backgroundColor: Colors.black45,
-                leading: Icon(Icons.person),
-                title: Text('Flutter map'),
-                trailing: Icon(Icons.menu),
-              ),
-              child: Image.network(
-                'https://tinyurl.com/yc4pctt5',
-                fit: BoxFit.cover,
-              ),
-              footer: Container(
-                height: 40,
-                child:Center(
-                  child:Text('Header'),
-                ),
-              )
-          ),
+      body:Center(
+        child: Image.network(
+          'https://tinyurl.com/yc4pctt5',
+          color: Colors.blue,
+          colorBlendMode: BlendMode.colorBurn,
+        ),
       ),
     );
   }
