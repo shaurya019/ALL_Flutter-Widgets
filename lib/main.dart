@@ -27,20 +27,18 @@ class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context){
-    return Center(
-      child: Icon(
-          Icons.flutter_dash,
-         color: Colors.orangeAccent,
-        size: 200,
-        shadows: [
-          BoxShadow(
-            color: Colors.black,
-            offset: Offset(8,8),
-            spreadRadius: 10,
-            blurRadius: 10,
-          ),
-        ],
+    return ListTile(
+      trailing: Hero(
+        tag: 'tag-1',
+        child: Icon(Icons.person),
       ),
+      onTap: () =>
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => SecondPage(),
+          ),
+        ),
+      title: Text('Click Me'),
     );
   }
   // const MyHomePage({super.key, required this.title});
@@ -48,6 +46,32 @@ class MyHomePage extends StatelessWidget {
   //
   // @override
   // State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
+  @override
+  return Scaffold(
+  appBar: AppBar(
+  title: const Text('Second Page'),
+  ),
+  body:Center(
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: <Widget>[
+  Hero(tag: 'tag-1',
+  child: Container(
+  color: Colors.orangeAccent,
+  height: 100,
+  width: 100,
+  ),
+  )
+  ],
+  ),
+  ),
+  );
+}
 }
 
 // class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
