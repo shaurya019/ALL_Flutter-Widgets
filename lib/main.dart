@@ -1,3 +1,5 @@
+
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -18,80 +20,52 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: const MyHomePage(),
+      home: const MyHomePage(title: 'Flutter Widegts'),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
   @override
-  Widget build(BuildContext context){
-    return ListTile(
-      trailing: Hero(
-        tag: 'tag-1',
-        child: Icon(Icons.person),
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+  int click = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
-      onTap: () =>
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => SecondPage(),
-          ),
-        ),
-      title: Text('Click Me'),
+      body:Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(
+                onPressed: (){
+                  setState(() {
+                    click+=1;
+                  });
+                },
+                icon: Icon(Icons.add_box),
+                iconSize: 50,
+              ),
+              Text(
+                'Click $click',
+                style: TextStyle(
+                  fontSize: 40,
+                ),
+              )
+            ],
+          )
+      ),
     );
   }
-  // const MyHomePage({super.key, required this.title});
-  // final String title;
-  //
-  // @override
-  // State<MyHomePage> createState() => _MyHomePageState();
 }
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
-
-  @override
-  return Scaffold(
-  appBar: AppBar(
-  title: const Text('Second Page'),
-  ),
-  body:Center(
-  child: Column(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: <Widget>[
-  Hero(tag: 'tag-1',
-  child: Container(
-  color: Colors.orangeAccent,
-  height: 100,
-  width: 100,
-  ),
-  )
-  ],
-  ),
-  ),
-  );
-}
-}
-
-// class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-//   int _counter = 0;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-//       body:Center(
-//         child: Image.network(
-//           'https://tinyurl.com/yc4pctt5',
-//           color: Colors.blue,
-//           colorBlendMode: BlendMode.colorBurn,
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 
 
