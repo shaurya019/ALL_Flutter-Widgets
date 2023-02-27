@@ -42,31 +42,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            ElevatedButton(
-                onPressed: (){
-                  setState(() {
-                    ignore = !ignore;
-                  });
-                }, child: Text(
-                ignore ? 'Blocked' : 'ALL good',
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: ignore ? Colors.red : Colors.green,
-            ),),
-            IgnorePointer(
-              ignoring: ignore,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Click me'
-                ),
-              ),
-
-            )
-          ],
+        child: ListTile(
+         title: Text('Flutter Mapp'),
+          tileColor: Colors.blueAccent,
+          onTap: () {},
+          leading: Icon(Icons.person),
+          trailing: Icon(Icons.menu),
         ),
       ),
     );
