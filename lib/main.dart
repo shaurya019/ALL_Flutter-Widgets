@@ -41,19 +41,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:ListWheelScrollView(
-        itemExtent: 100,
-        children: List.generate(
-          20,
-              (index) => ListTile(
-            title: Text('Flutter Mapp'),
-            tileColor: Colors.blueAccent,
-            onTap: () {},
-            leading: Icon(Icons.person),
-            trailing: Icon(Icons.menu),
-          ),),
+      body:Center(
+        child: MaterialButton(
+          onPressed: () {},
+          child: Text('Click'),
+          highlightColor: Colors.orangeAccent,
+          splashColor: Colors.redAccent,
+        ),
       ),
-
     );
   }
 }
