@@ -41,21 +41,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Center(
-        child: Container(
-            width: 100,
-          height: 100,
-          color: Colors.orangeAccent,
-          child: OverflowBox(
-            maxWidth: 200,
-            maxHeight: 200,
-              child: Container(
-                color: Colors.red.withOpacity(0.5),
-                width: double.infinity,
-                height: double.infinity,
-              )
-          ),
-        ),
+      body:Padding(
+        padding: EdgeInsets.all(40),
+        child: OverflowBar(
+          spacing: 8,
+          children: <Widget>[
+            ElevatedButton(onPressed: () {}, child: Text('Flutter Mapp')),
+           ElevatedButton(onPressed: () {}, child: Text('Flutter Mapp')),
+          ElevatedButton(onPressed: () {}, child: Text('Flutter Mapp')),
+         // ElevatedButton(onPressed: () {}, child: Text('Flutter Mapp')),
+          ],
+        )
       )
     );
   }
