@@ -34,44 +34,41 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  int click = 0;
+ bool ignore = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:PageView(
-        children: [
-          Container(
-            color: Colors.orangeAccent,
-            child: Center(
-              child: Text(
-                "1",
-                style: TextStyle(fontSize: 100,color: Colors.white),
-              ),
+      body:Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ElevatedButton(
+                onPressed: (){
+                  setState(() {
+                    ignore = !ignore;
+                  });
+                }, child: Text(
+                ignore ? 'Blocked' : 'ALL good',
             ),
-          ),
-          Container(
-            color: Colors.redAccent,
-            child: Center(
-              child: Text(
-                "2",
-                style: TextStyle(fontSize: 100,color: Colors.white),
+            style: ElevatedButton.styleFrom(
+              primary: ignore ? Colors.red : Colors.green,
+            ),),
+            IgnorePointer(
+              ignoring: ignore,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Click me'
+                ),
               ),
-            ),
-          ),
-          Container(
-            color: Colors.blueAccent,
-            child: Center(
-              child: Text(
-                "3",
-                style: TextStyle(fontSize: 100,color: Colors.white),
-              ),
-            ),
-          ),
-        ],
-      )
+
+            )
+          ],
+        ),
+      ),
     );
   }
 }
