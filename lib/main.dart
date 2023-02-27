@@ -42,13 +42,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: PhysicalShape(
-          elevation: 5.0,
-          clipper: ShapeBorderClipper(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40.0)
-            ),
-          ),
+        child: PhysicalModel(
+          elevation: 20.0,
+         shadowColor: Colors.redAccent,
+          shape:BoxShape.circle,
           color: Colors.orangeAccent,
           child: SizedBox(
             height: 250,
