@@ -39,16 +39,32 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: GridPaper(
-          color: Colors.pink,
-          divisions: 1,
-          interval: 110,
-          subdivisions: 6,
+      body:Center(
+      child: SizedBox(
+      height: 400,
+    width: 300,
+    child:GridTile(
+    header: Container(
+    height: 40,
+    child:Center(
+    child:Text('Header'),
+    ),
+    color: Colors.black38,
+    ),
+    child: Image.network(
+    'https://tinyurl.com/yc4pctt5',
+    fit: BoxFit.cover,
+    ),
+    footer: Container(
+        height: 40,
+        child:Center(
+          child:Text('Header'),
         ),
-      )
+    )
+      ),
+    ),
+
+      ),
     );
   }
 }
