@@ -42,25 +42,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              IconButton(
-                onPressed: (){
-                  setState(() {
-                    click+=1;
-                  });
-                },
-                icon: Icon(Icons.add_box),
-                iconSize: 50,
-              ),
-              Text(
-                'Click $click',
-                style: TextStyle(
-                  fontSize: 40,
-                ),
-              )
-            ],
+          child: OutlinedButton(
+            onPressed: () {},
+            child: Text('Click Me'),
+            style: OutlinedButton.styleFrom(
+              primary: Colors.white,
+              backgroundColor: Colors.orangeAccent,
+            ),
           )
       ),
     );
