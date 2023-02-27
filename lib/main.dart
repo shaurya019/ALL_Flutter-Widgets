@@ -41,14 +41,23 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Column(
-        children: <Widget>[
-          Placeholder(
-            fallbackHeight: 300,
-            fallbackWidth: 50,
-            color: Colors.orangeAccent,
-          )
-        ],
+      body:Center(
+        child: PhysicalShape(
+          elevation: 5.0,
+          clipper: ShapeBorderClipper(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40.0)
+            ),
+          ),
+          color: Colors.orangeAccent,
+          child: SizedBox(
+            height: 250,
+            width: 250,
+              child:Center(
+                  child:Icon(Icons.flutter_dash,size: 100,)
+              ),
+          ),
+        ),
       )
     );
   }
