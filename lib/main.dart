@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
       // showSemanticsDebugger: true,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      // themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'Flutter Widegts'),
     );
   }
@@ -34,7 +35,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,23 +42,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body: Center(
-        child: InputChip(
-          avatar: CircleAvatar(
-            backgroundImage: NetworkImage(
-              'https://tinyurl.com/5n88rk79',
-            ),
-          ),
-          label: Text('Einstein'),
-          onSelected: (bool newBool){
-            setState(() {
-              isSelected = !isSelected;
-            });
-          },
-          selected: isSelected,
-          selectedColor: Colors.white38,
-          deleteIcon: Icon(Icons.cancel_outlined),
-          onDeleted: () {},
-        ),
+        child: Text('Shaurya'),
       )
     );
   }
