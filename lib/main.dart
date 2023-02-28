@@ -35,17 +35,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+  final ScrollController controller = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: SelectableText(
-          'This is selectable',
-          style: TextStyle(fontSize: 30),
-          onSelectionChanged: (selection, cause) {},
+      body:Scrollbar(
+        controller: controller,
+        child: ListView.builder(
+            controller: controller,
+            itemCount: 40,
+            itemBuilder: (BuildContext context,int index){
+              return ListTile(
+                title: Text('Item ${index+1}'),
+              );
+            }
         ),
       )
     );
