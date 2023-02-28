@@ -43,27 +43,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: ElevatedButton(
-          onPressed: (){},
-          child: Text('Click'),
+        child: RotatedBox(
+          quarterTurns:1,
+          child: FlutterLogo(
+            size:200,
+          ),
         ),
-      ),
-      drawer: const Drawer(
-          child:SafeArea(child: ListTile(title:Text('Click'),),),
-      ),
-      bottomNavigationBar:BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        onTap: (int index) {},
-        selectedItemColor: Colors.orangeAccent,
       ),
     );
   }
