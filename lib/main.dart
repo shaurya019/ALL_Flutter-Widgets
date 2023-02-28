@@ -34,27 +34,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+  late AnimationController controller;
+
   @override
+  void initState(){
+    controller = AnimationController(
+      vsync: this,
+        duration: Duration(seconds: 5),
+    )..addListener(() {
+      setState(() {});
+    });
+    controller.repeat(reverse: true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints){
-          if(constraints.maxWidth>600){
-            return Center(
-              child: Image.network(
-                'https://tinyurl.com/yc4pctt5',
-              ),
-            );
-          }else{
-            return Center(
-              child: Text('Screen under 600'),
-            );
-          }
-        },
-      ),
+      body: Padding(
+        padding: EdgeInsets.all(40.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            LinearProgressIndicator(
+              value: controller.value,
+            ),
+            LinearProgressIndicator(),
+          ],
+        ),
+      )
     );
   }
 }
