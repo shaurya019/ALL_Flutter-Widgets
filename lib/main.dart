@@ -38,18 +38,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orangeAccent,
+        body: InteractiveViewer(
+          boundaryMargin: EdgeInsets.all(double.infinity,),
+      child:Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Center(
-        child: InkWell(
-          onTap: () {
-            setState(() {
-              color = Colors.red;
-            });
-          },
+    ),
         ),
-      ),
     );
   }
 }
