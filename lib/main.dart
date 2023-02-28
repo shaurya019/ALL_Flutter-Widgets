@@ -59,18 +59,28 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            LinearProgressIndicator(
-              value: controller.value,
-            ),
-            LinearProgressIndicator(),
-          ],
+      body: Center(
+        child: ElevatedButton(
+          child: Text('Open'),
+          onPressed: (){
+            ScaffoldMessenger.of(context).showMaterialBanner(
+                MaterialBanner(
+                    padding: EdgeInsets.all(20),
+                    content: Text('Subscribe'),
+                    leading: Icon(Icons.notifications_active_outlined),
+                    elevation: 5,
+                    backgroundColor: Colors.white12,
+                    actions: <Widget>[
+                      TextButton(
+                          onPressed: (){
+                            ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                          }, child: Text('dismiss'),),
+                    ],
+                ),
+            );
+          },
         ),
-      )
+      ),
     );
   }
 }
