@@ -48,6 +48,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
           child: Text('Click'),
         ),
       ),
+      drawer: const Drawer(
+          child:SafeArea(child: ListTile(title:Text('Click'),),),
+      ),
       bottomNavigationBar:BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
