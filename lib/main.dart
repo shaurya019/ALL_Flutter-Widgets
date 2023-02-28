@@ -42,16 +42,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Scrollbar(
-        controller: controller,
-        child: ListView.builder(
-            controller: controller,
-            itemCount: 40,
-            itemBuilder: (BuildContext context,int index){
-              return ListTile(
-                title: Text('Item ${index+1}'),
-              );
-            }
+      body:Center(
+        child: RawChip(
+          label: Text('RawChip'),
+          avatar: Icon(Icons.person),
+          deleteIcon: Icon(Icons.remove_circle),
+          onPressed: () {},
+          onDeleted: () {},
         ),
       )
     );
