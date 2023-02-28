@@ -34,51 +34,58 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  late AnimationController controller;
-
+  int index=0;
   @override
-  void initState(){
-    controller = AnimationController(
-      vsync: this,
-        duration: Duration(seconds: 5),
-    )..addListener(() {
-      setState(() {});
-    });
-    controller.repeat(reverse: true);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Open'),
-          onPressed: (){
-            ScaffoldMessenger.of(context).showMaterialBanner(
-                MaterialBanner(
-                    padding: EdgeInsets.all(20),
-                    content: Text('Subscribe'),
-                    leading: Icon(Icons.notifications_active_outlined),
-                    elevation: 5,
-                    backgroundColor: Colors.white12,
-                    actions: <Widget>[
-                      TextButton(
-                          onPressed: (){
-                            ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-                          }, child: Text('dismiss'),),
-                    ],
-                ),
-            );
-          },
+      body: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 1;
+                        });
+                      },
+                      child: Text("1")),
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 2;
+                        });
+                      },
+                      child: Text("2")),
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 3;
+                        });
+                      },
+                      child: Text("3")),
+                ]
+            ),
+            IndexedStack(
+              index: index,
+                children: <Widget>[
+                  Center(
+                    child: Image.network("https://hips.hearstapps.com/hmg-prod/images/gettyimages-3091504.jpg"),
+                  ),
+                  Center(
+                    child: Image.network("https://images.saymedia-content.com/.image/t_share/MTc0NDc1NTEyNDkwNTY3MzAy/an-interview-from-beyond-with-albert-einstein.jpg"),
+                  ),
+                  Center(
+                    child: Image.network("https://img.freepik.com/premium-vector/albert-einstein-cartoon-character-has-idea_324746-781.jpg?w=2000"),
+                  ),
+                ],
+            ),
+          ],
         ),
       ),
     );
