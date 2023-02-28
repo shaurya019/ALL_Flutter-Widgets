@@ -43,14 +43,25 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: RawChip(
-          label: Text('RawChip'),
-          avatar: Icon(Icons.person),
-          deleteIcon: Icon(Icons.remove_circle),
-          onPressed: () {},
-          onDeleted: () {},
+        child: ElevatedButton(
+          onPressed: (){},
+          child: Text('Click'),
         ),
-      )
+      ),
+      bottomNavigationBar:BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        onTap: (int index) {},
+        selectedItemColor: Colors.orangeAccent,
+      ),
     );
   }
 }
