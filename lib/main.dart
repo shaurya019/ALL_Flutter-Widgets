@@ -34,30 +34,24 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-List<String> options = ['option 1','option 2'];
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  String current = options[0];
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80.0),
+        child:Container(
+        height: 120,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[
+              Colors.redAccent,
+              Colors.orangeAccent,
+            ]
+          )
+        ),
       ),
-      body:Column(
-        children: <Widget>[
-          RadioListTile(title: Text('option 1'),value: options[0], groupValue: current, onChanged: (value){
-            setState(() {
-              current = value.toString();
-            });
-          },),
-          RadioListTile(title: Text('option 2'),value: options[1], groupValue: current, onChanged: (value){
-            setState(() {
-              current = value.toString();
-            });
-          },),
-        ],
       ),
     );
   }
