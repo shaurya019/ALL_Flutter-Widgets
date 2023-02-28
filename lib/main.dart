@@ -34,19 +34,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
- Color color = Colors.blue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
-        body: InteractiveViewer(
-          boundaryMargin: EdgeInsets.all(double.infinity,),
-      child:Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-    ),
-        ),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints){
+          if(constraints.maxWidth>600){
+            return Center(
+              child: Image.network(
+                'https://tinyurl.com/yc4pctt5',
+              ),
+            );
+          }else{
+            return Center(
+              child: Text('Screen under 600'),
+            );
+          }
+        },
+      ),
     );
   }
 }
