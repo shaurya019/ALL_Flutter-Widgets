@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      // themeMode: ThemeMode.light,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
+      // themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'Flutter Widegts'),
     );
   }
@@ -42,7 +42,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body: Center(
-        child: Text('Shaurya'),
+        child: SelectableText(
+          'This is selectable',
+          style: TextStyle(fontSize: 30),
+          onSelectionChanged: (selection, cause) {},
+        ),
       )
     );
   }
