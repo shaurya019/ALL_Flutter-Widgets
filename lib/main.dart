@@ -35,32 +35,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  List<String> items = [
-    "Item 1",
-    "Item 2",
-  ];
+  RangeValues values = const RangeValues(0.1,0.5);
   @override
   Widget build(BuildContext context) {
+    RangeLabels labels = RangeLabels(
+      values.start.toString(),
+      values.end.toString(),
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await Future.delayed(Duration(seconds: 1),);
-          int nextItem = items.length+1;
-          items.add("items $nextItem");
-          setState(() {});
+      body:Center(
+        child: RangeSlider(
+          values: values,
+          divisions: 10,
+            labels:labels,
+          onChanged: (newValues){
+            setState(() {
+              values = newValues;
+            });
           },
-        child: ListView.builder(
-            itemCount: items.length,
-            itemBuilder: ((context,index) => Padding(padding: EdgeInsets.all(8.0),
-            child: ListTile(
-              title: Text(items[index]),
-              tileColor: Colors.white24,
-            ),)),
         ),
-        color: Colors.white,
       )
     );
   }
