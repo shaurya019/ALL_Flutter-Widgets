@@ -34,60 +34,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  int index=0;
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 1;
-                        });
-                      },
-                      child: Text("1")),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 2;
-                        });
-                      },
-                      child: Text("2")),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 3;
-                        });
-                      },
-                      child: Text("3")),
-                ]
+      body: Center(
+        child: InputChip(
+          avatar: CircleAvatar(
+            backgroundImage: NetworkImage(
+              'https://tinyurl.com/5n88rk79',
             ),
-            IndexedStack(
-              index: index,
-                children: <Widget>[
-                  Center(
-                    child: Image.network("https://hips.hearstapps.com/hmg-prod/images/gettyimages-3091504.jpg"),
-                  ),
-                  Center(
-                    child: Image.network("https://images.saymedia-content.com/.image/t_share/MTc0NDc1NTEyNDkwNTY3MzAy/an-interview-from-beyond-with-albert-einstein.jpg"),
-                  ),
-                  Center(
-                    child: Image.network("https://img.freepik.com/premium-vector/albert-einstein-cartoon-character-has-idea_324746-781.jpg?w=2000"),
-                  ),
-                ],
-            ),
-          ],
+          ),
+          label: Text('Einstein'),
+          onSelected: (bool newBool){
+            setState(() {
+              isSelected = !isSelected;
+            });
+          },
+          selected: isSelected,
+          selectedColor: Colors.white38,
+          deleteIcon: Icon(Icons.cancel_outlined),
+          onDeleted: () {},
         ),
-      ),
+      )
     );
   }
 }
