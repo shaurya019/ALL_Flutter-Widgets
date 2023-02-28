@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       // themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'Flutter Widegts'),
     );
@@ -43,12 +43,19 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         title: Text(widget.title),
       ),
       body:Center(
-        child: RotatedBox(
-          quarterTurns:1,
-          child: FlutterLogo(
-            size:200,
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.orangeAccent,fontSize: 30),
+            children: <TextSpan>[
+              TextSpan(text: 'To the  '),
+              TextSpan(
+                text: 'moon  ',
+                style: TextStyle(color: Colors.white,),
+              ),
+              TextSpan(text: 'and beyond'),
+            ],
           ),
-        ),
+        )
       ),
     );
   }
