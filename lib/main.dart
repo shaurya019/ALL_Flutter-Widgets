@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
 
   late final Animation<double> _animation = CurvedAnimation(
       parent: _controller,
-      curve: Curves.fastOutSlowIn,
+      curve: Curves.easeInCirc,
   );
   @override
 
@@ -61,8 +61,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       ),
       body: Center(
         child:ScaleTransition(
-          scale: _animation,
-          child: FlutterLogo(size: 150.0,),
+          turns: _animation,
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: FlutterLogo(size: 150.0,),
+          ),
         ),
       ),
     );
