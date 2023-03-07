@@ -28,14 +28,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+ var arrData = [
+   {
+     'name':'Tanuja',
+     'mno':'9717054182',
+     'age':'43',
+   },
+   {
+     'name':'Jitander',
+     'mno':'9899963630',
+     'age':'51',
+   },
+   {
+     'name':'Shaurya',
+     'mno':'8383867619',
+     'age':'22',
+   }
+ ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter Widget',),
       ),
-      body: Center(
-        child: Text('Shaurya',style: TextStyle(fontFamily: 'FontMain')),
+      body: Container(
+        child: ListView(
+          children: arrData.map((value) =>
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text(value['name'].toString()),
+              subtitle: Text(value['mno'].toString()),
+              trailing: CircleAvatar(
+                radius:15,
+                backgroundColor: Colors.blueAccent,
+                child:Text(value['age'].toString()),)
+            ),
+          ).toList(),
+        ),
       ),
     );
   }
