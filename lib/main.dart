@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math' as math
 void main() {
   runApp(const MyApp());
 }
@@ -28,26 +28,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-bool f = false;
+late final AnimationController _controller = AnimationController(
+  duration: Duration(seconds: 10),
+  vsync: this,
+)..repeat();
+
    @override
+   void dipose(){
+     super.dipose();
+   }
+
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          f = !f;
-        });
-      },
-      child: Center(
-        child: Container(
-          width: double.infinity,
-          height: 250.0,
-          color: Colors.grey,
-          child: AnimatedAlign(
-            alignment: f ? Alignment.topRight : Alignment.bottomLeft,
-            duration: Duration(seconds: 1),
-            curve: Curves.fastOutSlowIn,
-          ),
+    return Center(
+      child: AnimatedBuilder(
+        animation: _controller,
+        child: FlutterLogo(
+          size: 100,
         ),
+        builder: (BuildContext context, Widget? child){
+          return Transform.rotate(
+              angle: _controller.value*2.0*math.pi,
+            child: child,
+          );
+        },
       ),
     );
   }
