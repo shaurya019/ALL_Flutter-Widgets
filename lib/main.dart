@@ -29,25 +29,34 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   bool f = false;
+  double _fontsize = 60;
+  Color _color = Colors.blue;
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          f = !f;
-        });
-      },
-      child: Center(
-        child: AnimatedContainer(
-          width: f ? 200.0 : 100.0,
-          height: f ? 100.0 : 200.0,
-          color: f ? Colors.grey : Colors.white30,
-          alignment: f ? Alignment.center : Alignment.topCenter,
-          duration: Duration(seconds: 2),
-          curve: Curves.fastOutSlowIn,
-          child: FlutterLogo(size: 75),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.min,
+      children: <Widget>[
+        SizedBox(
+          height: 120,
+          child: AnimatedDefaultTextStyle(
+            duration: Duration(milliseconds:  300),
+            style: TextStyle(
+                fontsize : _fontsize,
+              color: _color,
+              fontWeight: FontWeight.bold,
+            ),
+            child: Text('Flutter'),
+          ),
         ),
-      ),
+        TextButton(onPressed: (){
+          setState(() {
+            _fontsize : f ? 90 : 60;
+            _color : f ? Colors.blue : Colors.red;
+            f = !f;
+          });
+        }, child: Text('Switch'))
+      ],
     );
   }
 }
