@@ -28,18 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
- bool f = false;
- late AnimationController _controller;
-
-  @override
-  void initstate() {
-    _controller =  AnimationController(
-      duration: Duration(seconds: 1),
-      vsync: this,
-    );
-    super.initstate();
-  }
-
+ double _opacity = 1.0;
  @override
  void dispose() {
    _controller.dispose ();
@@ -47,21 +36,24 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
  }
   Widget build(BuildContext context) {
     return Center(
-      child: GestureDetector(
-        onTap: (){
-          if(f==false){
-            _controller.forward();
-            f = true;
-          }else{
-            _controller.reverse();
-            f = false;
-          }
-        },
-        child: AnimatedIcon(
-          icon: AnimatedIcons.play_pause,
-          progress: _controller,
-          size: 100,
-        ),
+      child: Column(
+       mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          AnimatedOpacity(
+              opacity: _opacity,
+              duration: Duration(seconds: 2),
+            child: FlutterLogo(
+              size: 50,
+            ),
+          ),
+          ElevatedButton(
+              onPressed: (){
+            setState(() {
+              () => _opacity = _opacity == 0 ? 1.0 : 0.0,
+            });
+          }, child: Text('Fade Logo'))
+        ],
       ),
     );
   }
