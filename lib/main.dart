@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
- double _opacity = 1.0;
+ double P = 1.0;
  @override
  void dispose() {
    _controller.dispose ();
@@ -40,19 +40,25 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          AnimatedOpacity(
-              opacity: _opacity,
-              duration: Duration(seconds: 2),
-            child: FlutterLogo(
-              size: 50,
-            ),
-          ),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blueAccent,
+            ),
               onPressed: (){
             setState(() {
-              () => _opacity = _opacity == 0 ? 1.0 : 0.0,
+              P = P == 0 ? 100.0 : 0.0,
             });
-          }, child: Text('Fade Logo'))
+          }, child: Text('Padding Change')),
+          AnimatedPadding(
+              padding: EdgeInsets.all(P),
+              duration: Duration(seconds: 2),
+            curve: Curves.easeInOut,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height/4,
+              color: Colors.blueAccent,
+            ),
+          )
         ],
       ),
     );
