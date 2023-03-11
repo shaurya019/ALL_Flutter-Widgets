@@ -28,29 +28,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-late final AnimationController _controller = AnimationController(
-  duration: Duration(seconds: 10),
-  vsync: this,
-)..repeat();
-
-   @override
-   void dipose(){
-     super.dipose();
-   }
-
+  bool f = false;
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AnimatedBuilder(
-        animation: _controller,
-        child: FlutterLogo(
-          size: 100,
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          f = !f;
+        });
+      },
+      child: Center(
+        child: AnimatedContainer(
+          width: f ? 200.0 : 100.0,
+          height: f ? 100.0 : 200.0,
+          color: f ? Colors.grey : Colors.white30,
+          alignment: f ? Alignment.center : Alignment.topCenter,
+          duration: Duration(seconds: 2),
+          curve: Curves.fastOutSlowIn,
+          child: FlutterLogo(size: 75),
         ),
-        builder: (BuildContext context, Widget? child){
-          return Transform.rotate(
-              angle: _controller.value*2.0*math.pi,
-            child: child,
-          );
-        },
       ),
     );
   }
