@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
- double P = 1.0;
+ bool f = false;
  @override
  void dispose() {
    _controller.dispose ();
@@ -40,25 +40,28 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          AnimatedPhysicalModel(
+              child: SizedBox(
+                height: 120.0,
+                width: 120.0,
+                child: Icon(Icons.android_outlined),
+              ),
+              curve: Curves.fastOutSlowIn,
+              shape: BoxShape.rectangle,
+              elevation: f ? 0 : 6.0,
+              color: Colors.white30,
+              shadowColor: Colors.black,
+              duration: Duration(milliseconds: 500)
+          ),
+          SizedBox(
+            height: 20,
+          ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.blueAccent,
-            ),
               onPressed: (){
             setState(() {
-              P = P == 0 ? 100.0 : 0.0,
+              f = !f;
             });
-          }, child: Text('Padding Change')),
-          AnimatedPadding(
-              padding: EdgeInsets.all(P),
-              duration: Duration(seconds: 2),
-            curve: Curves.easeInOut,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/4,
-              color: Colors.blueAccent,
-            ),
-          )
+          }, child: Text('Click'))
         ],
       ),
     );
