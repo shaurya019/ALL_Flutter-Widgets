@@ -28,35 +28,41 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
-  bool f = false;
-  double _fontsize = 60;
-  Color _color = Colors.blue;
+ bool f = false;
+ late AnimationController _controller;
 
   @override
+  void initstate() {
+    _controller =  AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+    super.initstate();
+  }
+
+ @override
+ void dispose() {
+   _controller.dispose ();
+   super.dispose ();
+ }
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.min,
-      children: <Widget>[
-        SizedBox(
-          height: 120,
-          child: AnimatedDefaultTextStyle(
-            duration: Duration(milliseconds:  300),
-            style: TextStyle(
-                fontsize : _fontsize,
-              color: _color,
-              fontWeight: FontWeight.bold,
-            ),
-            child: Text('Flutter'),
-          ),
+    return Center(
+      child: GestureDetector(
+        onTap: (){
+          if(f==false){
+            _controller.forward();
+            f = true;
+          }else{
+            _controller.reverse();
+            f = false;
+          }
+        },
+        child: AnimatedIcon(
+          icon: AnimatedIcons.play_pause,
+          progress: _controller,
+          size: 100,
         ),
-        TextButton(onPressed: (){
-          setState(() {
-            _fontsize : f ? 90 : 60;
-            _color : f ? Colors.blue : Colors.red;
-            f = !f;
-          });
-        }, child: Text('Switch'))
-      ],
+      ),
     );
   }
 }
