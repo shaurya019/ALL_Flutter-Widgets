@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math
+import 'package:animated_text_kit/animated_text_kit.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -28,41 +29,44 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
- bool f = false;
+
  @override
- void dispose() {
-   _controller.dispose ();
-   super.dispose ();
- }
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-       mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          AnimatedPhysicalModel(
-              child: SizedBox(
-                height: 120.0,
-                width: 120.0,
-                child: Icon(Icons.android_outlined),
+    return Scaffold(
+      body: Center(
+        child: SizedBox(
+          width: 250.0,
+          child:Row(
+            children: [
+              Text('Quick',style: TextStyle(
+                fontSize: 70.0,
+                fontFamily: 'Canterbury',
+                  color: Colors.blueAccent,
+              ),),
+              DefaultTextStyle(
+                style: const TextStyle(
+                  fontSize: 70.0,
+                  fontFamily: 'Canterbury',
+                  color: Colors.blueAccent,
+                  fontWeight: FontWeight.bold
+                ),
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    ScaleAnimatedText('k'),
+                    ScaleAnimatedText('k'),
+                    ScaleAnimatedText('k'),
+                    ScaleAnimatedText('k'),
+                    ScaleAnimatedText('k'),
+                    ScaleAnimatedText('k'),
+                  ],
+                  onTap: () {
+                    print("Tap Event");
+                  },
+                ),
               ),
-              curve: Curves.fastOutSlowIn,
-              shape: BoxShape.rectangle,
-              elevation: f ? 0 : 6.0,
-              color: Colors.white30,
-              shadowColor: Colors.black,
-              duration: Duration(milliseconds: 500)
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-              onPressed: (){
-            setState(() {
-              f = !f;
-            });
-          }, child: Text('Click'))
-        ],
+            ],
+          )
+        ),
       ),
     );
   }
