@@ -33,23 +33,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text('Tap ' + x.toString() + ' times',
-              style: TextStyle(fontSize: 30),
-            ),
-            GestureDetector(
-              onTap: help,
-              child: Container(
-                padding: EdgeInsets.all(15),
-                color: Colors.green[200],
-                child: Text('TAP HERE', style: TextStyle(fontSize: 30),),
+    return GestureDetector(
+      onTap: help,
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text('Tap ' + x.toString() + ' times',
+                style: TextStyle(fontSize: 30),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
