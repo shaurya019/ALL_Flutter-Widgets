@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               "$c",
               style: TextStyle(fontSize: 36.0),
             ),
+      ),
         floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -88,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             child: Icon(Icons.loop),
           ),
         ],
-      ),
       ),
     );
   }
