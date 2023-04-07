@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   int x = 0;
 
   @override
@@ -42,11 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(fontSize: 30),
             ),
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  x++;
-                });
-              },
+              onTap: help,
               child: Container(
                 padding: EdgeInsets.all(15),
                 color: Colors.green[200],
@@ -59,49 +55,52 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void help() {
+    setState(() {
+      x++;
+    });
+  }
 }
 
 
 
 
-
-
-//        Scaffold(
-//       body: Center(
-//         child: SizedBox(
-//           width: 250.0,
-//           child:Row(
-//             children: [
-//               Text('Quick',style: TextStyle(
-//                 fontSize: 70.0,
-//                 fontFamily: 'Canterbury',
-//                   color: Colors.blueAccent,
-//               ),),
-//               DefaultTextStyle(
-//                 style: const TextStyle(
-//                   fontSize: 70.0,
-//                   fontFamily: 'Canterbury',
-//                   color: Colors.blueAccent,
-//                   fontWeight: FontWeight.bold
-//                 ),
-//                 child: AnimatedTextKit(
-//                   animatedTexts: [
-//                     ScaleAnimatedText('k'),
-//                     ScaleAnimatedText('k'),
-//                     ScaleAnimatedText('k'),
-//                     ScaleAnimatedText('k'),
-//                     ScaleAnimatedText('k'),
-//                     ScaleAnimatedText('k'),
-//                   ],
-//                   onTap: () {
-//                     print("Tap Event");
-//                   },
-//                 ),
-//               ),
-//             ],
-//           )
-//         ),
-//       ),
-//     );
-//   }
-// }
+////        Scaffold(
+// //       body: Center(
+// //         child: SizedBox(
+// //           width: 250.0,
+// //           child:Row(
+// //             children: [
+// //               Text('Quick',style: TextStyle(
+// //                 fontSize: 70.0,
+// //                 fontFamily: 'Canterbury',
+// //                   color: Colors.blueAccent,
+// //               ),),
+// //               DefaultTextStyle(
+// //                 style: const TextStyle(
+// //                   fontSize: 70.0,
+// //                   fontFamily: 'Canterbury',
+// //                   color: Colors.blueAccent,
+// //                   fontWeight: FontWeight.bold
+// //                 ),
+// //                 child: AnimatedTextKit(
+// //                   animatedTexts: [
+// //                     ScaleAnimatedText('k'),
+// //                     ScaleAnimatedText('k'),
+// //                     ScaleAnimatedText('k'),
+// //                     ScaleAnimatedText('k'),
+// //                     ScaleAnimatedText('k'),
+// //                     ScaleAnimatedText('k'),
+// //                   ],
+// //                   onTap: () {
+// //                     print("Tap Event");
+// //                   },
+// //                 ),
+// //               ),
+// //             ],
+// //           )
+// //         ),
+// //       ),
+// //     );
+// //   }
+// // }
