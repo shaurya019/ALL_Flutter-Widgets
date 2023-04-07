@@ -1,90 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'counter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
-const KTextStyle = TextStyle(
-  color: Colors.white,
-  fontSize: 38.0,
-);
-List<Color> arr = [
-  Colors.green,
-  Colors.orange,
-  Colors.redAccent,
-  Colors.green,
-  Colors.red,
-  Colors.cyan,
-  Colors.blueAccent,
-  Colors.pinkAccent,
-  Colors.purpleAccent,
-  Colors.deepPurple,
-  Colors.cyanAccent,
-  Colors.purple,
-];
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider(
+      create: (context) => CounterBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  int c = 0;
   @override
   Widget build(BuildContext context) {
+    final counterBloc = context.read<CounterBloc>();
     return Scaffold(
       appBar: AppBar(
         title: Text("Counter App"),
       ),
       body: Center(
-        child: Text(
-              "$c",
+        child: BlocBuilder<CounterBloc,int>(
+          builder: (context,state) {
+            return Text(
+              "$state",
               style: TextStyle(fontSize: 36.0),
-            ),
+            );
+          },
+        )
       ),
-        floatingActionButton: Row(
+      floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
-            onPressed: (){
-              counterAction(CounterEvent.Increment);
+            onPressed: () {
+              // counterAction(CounterEvent.Increment);
+              counterBloc.add(CounterEvent.Increment);
             },
-            heroTag:"1",
+            heroTag: "1",
             backgroundColor: Colors.orangeAccent,
             child: Icon(Icons.add),
           ),
           FloatingActionButton(
-            onPressed: (){
-              counterAction(CounterEvent.Deccrement);
+            onPressed: () {
+              // counterAction(CounterEvent.Deccrement);
+              counterBloc.add(CounterEvent.Deccrement);
             },
-            heroTag:"1",
+            heroTag: "1",
             backgroundColor: Colors.orangeAccent,
             child: Icon(Icons.remove),
           ),
           FloatingActionButton(
-            onPressed: (){
-              counterAction(CounterEvent.Reset);
+            onPressed: () {
+              // counterAction(CounterEvent.Reset);
+              counterBloc.add(CounterEvent.Reset);
             },
-            heroTag:"1",
+            heroTag: "1",
             backgroundColor: Colors.orangeAccent,
             child: Icon(Icons.loop),
           ),
@@ -92,29 +85,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
     );
   }
-  void counterAction(CounterEvent x) {
-    setState(() {
-      switch(x){
-        case CounterEvent.Increment:
-          c++;
-          break;
-        case CounterEvent.Deccrement:
-          c--;
-          break;
-        case CounterEvent.Reset:
-          c=0;
-          break;
-      }
-    });
-  }
 }
-
-enum CounterEvent {
-  Increment,
-  Deccrement,
-  Reset,
-}
-
 
 
 
