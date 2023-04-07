@@ -5,6 +5,25 @@ void main() {
   runApp(const MyApp());
 }
 
+const KTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 38.0,
+);
+List<Color> arr = [
+  Colors.green,
+  Colors.orange,
+  Colors.redAccent,
+  Colors.green,
+  Colors.red,
+  Colors.cyan,
+  Colors.blueAccent,
+  Colors.pinkAccent,
+  Colors.purpleAccent,
+  Colors.deepPurple,
+  Colors.cyanAccent,
+  Colors.purple,
+];
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -33,27 +52,26 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: help,
-      child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text('Tap ' + x.toString() + ' times',
-                style: TextStyle(fontSize: 30),
-              ),
-            ],
+    return Scaffold(
+      body: Align(
+        child: GestureDetector(
+          onTap: (){
+            setState(() {
+              x++;
+            });
+            print(x);
+          },
+          child: Container(
+            width: 120,
+            height: 120,
+            color: arr[x],
+            child: Align(
+              child: Text('$x',style: KTextStyle,),
+            ),
           ),
         ),
       ),
     );
-  }
-
-  void help() {
-    setState(() {
-      x++;
-    });
   }
 }
 
