@@ -48,32 +48,73 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  int x = 0;
-
+  int c = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Align(
-        child: GestureDetector(
-          onTap: (){
-            setState(() {
-              x++;
-            });
-            print(x);
-          },
-          child: Container(
-            width: 120,
-            height: 120,
-            color: arr[x],
-            child: Align(
-              child: Text('$x',style: KTextStyle,),
+      appBar: AppBar(
+        title: Text("Counter App"),
+      ),
+      body: Center(
+        child: Text(
+              "$c",
+              style: TextStyle(fontSize: 36.0),
             ),
+        floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton(
+            onPressed: (){
+              counterAction(CounterEvent.Increment);
+            },
+            heroTag:"1",
+            backgroundColor: Colors.orangeAccent,
+            child: Icon(Icons.add),
           ),
-        ),
+          FloatingActionButton(
+            onPressed: (){
+              counterAction(CounterEvent.Deccrement);
+            },
+            heroTag:"1",
+            backgroundColor: Colors.orangeAccent,
+            child: Icon(Icons.remove),
+          ),
+          FloatingActionButton(
+            onPressed: (){
+              counterAction(CounterEvent.Reset);
+            },
+            heroTag:"1",
+            backgroundColor: Colors.orangeAccent,
+            child: Icon(Icons.loop),
+          ),
+        ],
+      ),
       ),
     );
   }
+  void counterAction(CounterEvent x) {
+    setState(() {
+      switch(x){
+        case CounterEvent.Increment:
+          c++;
+          break;
+        case CounterEvent.Deccrement:
+          c--;
+          break;
+        case CounterEvent.Reset:
+          c=0;
+          break;
+      }
+    });
+  }
 }
+
+enum CounterEvent {
+  Increment,
+  Deccrement,
+  Reset,
+}
+
 
 
 
